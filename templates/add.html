@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Book</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 mt-10">
+      <h2 class="text-2xl font-bold mb-6">Add a New Book</h2>
+
+      <!-- Form to add a new book -->
+      <form action="/add" method="POST">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="title"
+            >Title</label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="author"
+            >Author</label
+          >
+          <input
+            type="text"
+            id="author"
+            name="author"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-6">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="published_at"
+            >Published Date</label
+          >
+          <input
+            type="date"
+            id="published_at"
+            name="published_at"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div class="flex items-center justify-between">
+          <button
+            type="submit"
+            class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:shadow-outline"
+          >
+            Add Book
+          </button>
+        </div>
+      </form>
+
+      <!-- Link back to books page -->
+      <div class="mt-4">
+        <a href="/books" class="text-indigo-600 hover:underline"
+          >Back to Books</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

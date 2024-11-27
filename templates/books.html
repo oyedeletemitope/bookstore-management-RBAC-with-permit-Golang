@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-center my-8">Books</h1>
+      <div class="text-center mb-4">
+        <a
+          href="/add"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >Add Book</a
+        >
+      </div>
+
+      {{if eq (len .) 0}}
+      <p class="text-center text-gray-600">No books to fetch</p>
+      {{else}}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{range .}}
+        <div class="bg-white shadow-md rounded-lg p-6 relative">
+          <h2 class="text-xl font-bold mb-2">{{.Title}}</h2>
+          <p><strong>Author:</strong> {{.Author}}</p>
+          {{if .PublishedAt}}
+          <p>
+            <strong>Published Date:</strong> {{.PublishedAt.Format
+            "2006-01-02"}}
+          </p>
+          {{else}}
+          <p><strong>Published Date:</strong> Unknown</p>
+          {{end}}
+          <p><strong>Created At:</strong> {{.CreatedAt.Format "2006-01-02"}}</p>
+
+          <!-- Update and Delete Buttons -->
+          <div class="mt-4 flex space-x-2">
+            <form action="/update" method="GET">
+              <input type="hidden" name="id" value="{{.ID}}" />
+              <button
+                type="submit"
+                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none"
+              >
+                Update
+              </button>
+            </form>
+            <form action="/delete" method="POST">
+              <input type="hidden" name="id" value="{{.ID}}" />
+              <button
+                type="submit"
+                class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+        {{end}}
+      </div>
+      {{end}}
+    </div>
+  </body>
+</html>
